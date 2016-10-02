@@ -42,7 +42,6 @@ public class FieldPanel extends JPanel {
           Pos leftTop = leftTop();
           pressedAtX = e.getX() / scale - leftTop.x;
           pressedAtY = (getHeight() - e.getY()) / scale - leftTop.y;
-          System.out.println("pressed");
           return;
         }
 
