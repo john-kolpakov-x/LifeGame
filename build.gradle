@@ -1,0 +1,34 @@
+group 'asd'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+dependencies {
+  compile group: 'org.easytesting', name: 'fest-assert', version: '1.4'
+
+  testCompile group: 'org.testng', name: 'testng', version: '6.9.13.6'
+}
+
+compileJava {
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+}
+
+repositories {
+  mavenCentral()
+}
+
+sourceSets {
+  main {
+    java.srcDirs = ["src"]
+    resources.srcDirs = ["src", "src_resources"]
+    output.resourcesDir = "build/classes/main"
+  }
+  test {
+    java.srcDirs = ["test_src"]
+    resources.srcDirs = ["test_src", "test_resources"]
+    output.resourcesDir = "build/classes/test"
+  }
+}
