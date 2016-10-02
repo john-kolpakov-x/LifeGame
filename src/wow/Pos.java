@@ -58,4 +58,8 @@ public class Pos {
 
     return pos;
   }
+
+  public Pos add(Pos delta) {
+    return get(x + delta.x, y + delta.y);
+  }
 }

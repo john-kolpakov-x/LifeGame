@@ -27,6 +27,33 @@ public class Field {
     return lives.contains(pos);
   }
 
+  public Set<Pos> getLives() {
+    Set<Pos> ret = new HashSet<>();
+    ret.addAll(lives);
+    return ret;
+  }
+
+  public Rect area() {
+
+    int xMin = 0, xMax = 0, yMin = 0, yMax = 0;
+    boolean first = true;
+
+    for (Pos pos : lives) {
+      if (first) {
+        xMin = xMax = pos.x;
+        yMin = yMax = pos.y;
+        first = false;
+      } else {
+        if (xMin > pos.x) xMin = pos.x;
+        if (xMax < pos.x) xMax = pos.x;
+        if (yMin > pos.y) yMin = pos.y;
+        if (yMax < pos.y) yMax = pos.y;
+      }
+    }
+
+    return new Rect(Pos.get(xMin, yMin), Pos.get(xMax, yMax));
+  }
+
   public long countAround(Pos pos, Set<Pos> lives) {
     return around(pos).filter(lives::contains).count();
   }
