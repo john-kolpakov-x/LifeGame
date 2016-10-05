@@ -2,6 +2,7 @@ package wow;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class Pos {
   public final int x, y;
@@ -31,6 +32,10 @@ public class Pos {
   }
 
   private static final Map<Integer, Map<Integer, Pos>> exists = new HashMap<>();
+
+  public static Stream<Pos> allWentStream() {
+    return exists.values().stream().flatMap(m -> m.values().stream());
+  }
 
   public static Pos get(int x, int y) {
     Map<Integer, Pos> xRow = exists.get(x);

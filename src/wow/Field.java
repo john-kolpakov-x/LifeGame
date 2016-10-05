@@ -1,6 +1,7 @@
 package wow;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,14 +24,8 @@ public class Field {
     return lives.contains(Pos.get(x, y));
   }
 
-  public boolean isLife(Pos pos) {
-    return lives.contains(pos);
-  }
-
   public Set<Pos> getLives() {
-    Set<Pos> ret = new HashSet<>();
-    ret.addAll(lives);
-    return ret;
+    return Collections.unmodifiableSet(lives);
   }
 
   public Rect area() {
@@ -58,18 +53,18 @@ public class Field {
     return around(pos).filter(lives::contains).count();
   }
 
-  public void step() {
+  public synchronized void step() {
 
     Set<Pos> lives = this.lives;
 
-    Set<Pos> deathsToLive = lives.parallelStream()
+    Set<Pos> deathsToLive = lives.stream()
       .flatMap(Field::around)
       .distinct()
       .filter(pos -> 3 == countAround(pos, lives))
       .collect(Collectors.toSet());
 
 
-    Set<Pos> stayToLive = lives.parallelStream()
+    Set<Pos> stayToLive = lives.stream()
       .filter(pos -> {
         long count = countAround(pos, lives);
         return count == 2 || count == 3;

@@ -95,6 +95,15 @@ public class FieldPanel extends JPanel {
     g.setColor(Color.WHITE);
     g.fillRect(0, 0, screenWidth, screenHeight);
 
+    g.setColor(Color.WHITE.darker());
+    Pos.allWentStream().forEach(pos -> {
+      int x = pos.x + leftTop.x;
+      int y = pos.y + leftTop.y;
+
+      g.fillRect(x * scale, screenHeight - y * scale, scale, scale);
+    });
+
+
     Rect area = field.area();
 
     g.setColor(Color.GREEN);
