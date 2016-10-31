@@ -778,8 +778,7 @@ public class BigDecimalMath {
    * @since 2010-05-26 handle also cases where n is less than zero.
    */
   public static BigDecimal powRound(final BigDecimal x, final int n) {
-    /** Special cases: x^1=x and x^0 = 1
-     */
+    /* Special cases: x^1=x and x^0 = 1 */
     if (n == 1)
       return x;
     else if (n == 0)
@@ -808,7 +807,7 @@ public class BigDecimalMath {
    * @since 2010-05-26
    */
   public static BigDecimal powRound(final BigDecimal x, final BigInteger n) {
-    /** For now, the implementation forwards to the cases where n
+    /* For now, the implementation forwards to the cases where n
      * is in the range of the standard integers. This might, however, be
      * implemented to decompose larger powers into cascaded calls to smaller ones.
      */
@@ -830,7 +829,7 @@ public class BigDecimalMath {
    * @since 2010-05-26
    */
   public static BigDecimal powRound(final BigDecimal x, final Rational q) {
-    /** Special cases: x^1=x and x^0 = 1
+    /* Special cases: x^1=x and x^0 = 1
      */
     if (q.compareTo(BigInteger.ONE) == 0)
       return x;

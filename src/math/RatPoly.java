@@ -736,7 +736,7 @@ class RatPoly {
       Rational c = new Rational();
       for (int d = 1; d <= i && d < a.size(); d++) {
         if (i % d == 0) {
-          final Ifactor m = new Ifactor(i / d);
+          final IFactor m = new IFactor(i / d);
           c = c.add(a.elementAt(d).multiply(m.moebius()));
         }
       }

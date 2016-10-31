@@ -99,7 +99,7 @@ public class BigIntegerMath {
    * @author Richard J. Mathar
    */
   static public BigInteger sigmak(final BigInteger n, final int k) {
-    return (new Ifactor(n.abs())).sigma(k).n;
+    return (new IFactor(n.abs())).sigma(k).n;
   } /* sigmak */
 
   /**
@@ -111,7 +111,7 @@ public class BigIntegerMath {
    * @since 2006-08-14
    */
   static public BigInteger sigma(int n) {
-    return (new Ifactor(Math.abs(n))).sigma().n;
+    return (new IFactor(Math.abs(n))).sigma().n;
   }
 
   /**
@@ -123,7 +123,7 @@ public class BigIntegerMath {
    * @since 2010-08-27
    */
   static public Vector<BigInteger> divisors(final BigInteger n) {
-    return (new Ifactor(n.abs())).divisors();
+    return (new IFactor(n.abs())).divisors();
   }
 
   /**
@@ -135,7 +135,7 @@ public class BigIntegerMath {
    * @since 2006-08-14
    */
   static public BigInteger sigma(final BigInteger n) {
-    return (new Ifactor(n.abs())).sigma().n;
+    return (new IFactor(n.abs())).sigma().n;
   }
 
   /**
@@ -145,7 +145,7 @@ public class BigIntegerMath {
    * @return phi(n)
    * <a href="http://oeis.org/A000010">A000010</a> in the OEIS.
    * @author Richard J. Mathar
-   * @since 2012-03-04 Adapted to new Ifactor representation.
+   * @since 2012-03-04 Adapted to new IFactor representation.
    */
   public BigInteger eulerPhi(final int n) {
     return eulerPhi(BigInteger.valueOf((long) n));
@@ -158,16 +158,16 @@ public class BigIntegerMath {
    * @return phi(n)
    * <a href="http://oeis.org/A000010">A000010</a> in the OEIS.
    * @author Richard J. Mathar
-   * @since 2012-03-04 Adapted to new Ifactor representation.
+   * @since 2012-03-04 Adapted to new IFactor representation.
    */
   public BigInteger eulerPhi(final BigInteger n) {
     if (n.compareTo(BigInteger.ZERO) <= 0)
       throw new ArithmeticException("negative argument " + n + " of EulerPhi");
-    final Ifactor prFact = new Ifactor(n);
+    final IFactor prFact = new IFactor(n);
     BigInteger phi = n;
     if (n.compareTo(BigInteger.ONE) > 0)
-      for (int i = 0; i < prFact.primeexp.size(); i += 2) {
-        BigInteger p = new BigInteger(prFact.primeexp.elementAt(i).toString());
+      for (int i = 0; i < prFact.primeExp.size(); i += 2) {
+        BigInteger p = new BigInteger(prFact.primeExp.elementAt(i).toString());
         BigInteger p_1 = p.subtract(BigInteger.ONE);
         phi = phi.multiply(p_1).divide(p);
       }
@@ -303,7 +303,7 @@ public class BigIntegerMath {
   static public BigInteger core(final BigInteger n) {
     if (n.compareTo(BigInteger.ZERO) < 0)
       throw new ArithmeticException("Negative argument " + n);
-    final Ifactor i = new Ifactor(n);
+    final IFactor i = new IFactor(n);
     return i.core();
   }
 

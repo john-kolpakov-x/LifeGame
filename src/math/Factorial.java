@@ -8,13 +8,13 @@ import java.util.Vector;
  * Factorials.
  *
  * @author Richard J. Mathar
- * @since 2012-02-15 Storage of the values based on Ifactor, not BigInteger.
+ * @since 2012-02-15 Storage of the values based on IFactor, not BigInteger.
  */
 public class Factorial {
   /**
    * The list of all factorials as a vector.
    */
-  static Vector<Ifactor> a = new Vector<Ifactor>();
+  static Vector<IFactor> a = new Vector<IFactor>();
 
   /**
    * ctor().
@@ -24,8 +24,8 @@ public class Factorial {
    */
   public Factorial() {
     if (a.size() == 0) {
-      a.add(Ifactor.ONE);
-      a.add(Ifactor.ONE);
+      a.add(IFactor.ONE);
+      a.add(IFactor.ONE);
     }
   } /* ctor */
 
@@ -50,7 +50,7 @@ public class Factorial {
    * @return the factorial of n.
    * @author Richard J. Mathar
    */
-  public Ifactor toIfactor(int n) {
+  public IFactor toIfactor(int n) {
                 /* extend the internal list if needed.
                 */
     growto(n);
@@ -69,7 +69,7 @@ public class Factorial {
                 */
     while (a.size() <= n) {
       final int lastn = a.size() - 1;
-      final Ifactor nextn = new Ifactor(lastn + 1);
+      final IFactor nextn = new IFactor(lastn + 1);
       a.add(a.elementAt(lastn).multiply(nextn));
     }
   } /* growto */

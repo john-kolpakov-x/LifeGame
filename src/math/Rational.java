@@ -297,8 +297,8 @@ public class Rational implements Cloneable, Comparable<Rational> {
 
                 /* delegate the main work to ifactor#root()
                 */
-    Ifactor num = new Ifactor(a.abs());
-    Ifactor deno = new Ifactor(b);
+    IFactor num = new IFactor(a.abs());
+    IFactor deno = new IFactor(b);
     final Rational resul = num.root(rthroot).divide(deno.root(rthroot));
     if (flipsign)
       return resul.negate();
